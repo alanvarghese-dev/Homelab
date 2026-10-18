@@ -1,0 +1,10 @@
+[tools]
+docker-cli = "latest"
+flux2 = "latest"
+github-cli = "latest"
+helm = "latest"
+kubectl = "latest"
+kubectx = "latest"
+kubens = "latest"
+python = "latest"
+uv = "latest"
