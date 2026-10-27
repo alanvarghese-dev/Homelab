@@ -1,5 +1,6 @@
-rancher-kubeconfig
-rancher-server-ca.crt
+rancher-desktop-kubeconfig
+rancher-desktop-ca.crt
 .DS_STORE
+.env 
 
 

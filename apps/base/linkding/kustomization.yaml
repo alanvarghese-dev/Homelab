@@ -5,3 +5,4 @@ resources:
   #- networking.yaml
   - deployment.yaml
   - namespace.yaml
+  - storage.yaml
