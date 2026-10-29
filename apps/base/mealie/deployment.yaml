@@ -15,15 +15,24 @@ spec:
       labels:
         app: mealie
     spec:
+      securityContext:
+        fsGroup: 33 # www-data group ID
+        runAsUser: 33 # www-data user ID
+        runAsGroup: 33 # www-data group ID
+
       containers:
         - image: ghcr.io/mealie-recipes/mealie:v1.3.0
           name: mealie
           ports:
             - containerPort: 9000
+
+          securityContext:
+            allowPrivilegeEscalation: false
+
           volumeMounts:
             - mountPath: /app/data
               name: mealie-data
       volumes:
         - name: mealie-data
           persistentVolumeClaim:
-            claimName: mealie-data
+            claimName: mealie-data-pvc
