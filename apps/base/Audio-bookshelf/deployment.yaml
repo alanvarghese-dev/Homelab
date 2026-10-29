@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: audio-bookshelf
+  namespace: audio-bookshelf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: audio-bookshelf
+  template:
+    metadata:
+      labels:
+        app: audio-bookshelf
+    spec:
+      # securityContext:
+      #   fsGroup: 33 # www-data group ID
+      #  runAsUser: 33 # www-data user ID
+      # runAsGroup: 33 # www-data group ID
+
+      containers:
+        - name: audio-bookshelf
+          image: ghcr.io/advplyr/audiobookshelf:latest
+          ports:
+            - containerPort: 13378
+
+          # securityContext:
+          #  allowPrivilegeEscalation: false
+
+          volumeMounts:
+            - name: audio-bookshelf-data
+              mountPath: etc/audio-bookshelf/data
+
+      volumes:
+        - name: audio-bookshelf-data
+          persistentVolumeClaim:
+            claimName: audio-bookshelf-data-pvc
