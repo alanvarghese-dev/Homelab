@@ -11,14 +11,14 @@ apps/
 ├── README.md                      # This documentation guide
 ├── base/                          # Reusable, environment-agnostic application definitions
 │   ├── linkding/                  # Linkding bookmark manager base
-│   │   ├── deployment.yaml        # Deployment spec (2 replicas, image v1.31.0)
+│   │   ├── deployment.yaml        # Deployment spec (1 replica, image v1.31.0)
 │   │   ├── service.yaml           # ClusterIP service on port 9090
 │   │   ├── storage.yaml           # 1Gi PersistentVolumeClaim
 │   │   ├── namespace.yaml         # Dedicated 'linkding' namespace
 │   │   ├── kustomization.yaml     # Kustomize resource list
 │   │   └── README.md              # In-depth Linkding documentation
 │   └── mealie/                    # Mealie recipe manager base
-│       ├── deployment.yaml        # Deployment spec (2 replicas, image v1.3.0)
+│       ├── deployment.yaml        # Deployment spec (1 replica, image v1.3.0)
 │       ├── service.yaml           # ClusterIP service on port 9000
 │       ├── storage.yaml           # 500Mi PersistentVolumeClaim
 │       ├── namespace.yaml         # Dedicated 'mealie' namespace
@@ -37,10 +37,10 @@ apps/
 
 ## 📦 Application Catalog
 
-| Application | Namespace | Base Path | Staging Path | Upstream Image | Service Port | PVC Size |
-| :--- | :--- | :--- | :--- | :--- | :---: | :---: |
-| **[Linkding](base/linkding/README.md)** | `linkding` | `apps/base/linkding` | `apps/staging/linkding` | `sissbruecker/linkding:1.31.0` | `9090` | `1Gi` |
-| **[Mealie](base/mealie/README.md)** | `mealie` | `apps/base/mealie` | `apps/staging/mealie` | `ghcr.io/mealie-recipes/mealie:v1.3.0` | `9000` | `500Mi` |
+| Application | Namespace | Base Path | Staging Path | Upstream Image | Replicas | Service Port | PVC Size |
+| :--- | :--- | :--- | :--- | :--- | :---: | :---: | :---: |
+| **[Linkding](base/linkding/README.md)** | `linkding` | `apps/base/linkding` | `apps/staging/linkding` | `sissbruecker/linkding:1.31.0` | `1` | `9090` | `1Gi` |
+| **[Mealie](base/mealie/README.md)** | `mealie` | `apps/base/mealie` | `apps/staging/mealie` | `ghcr.io/mealie-recipes/mealie:v1.3.0` | `1` | `9000` | `500Mi` |
 
 ---
 

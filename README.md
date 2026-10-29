@@ -55,13 +55,13 @@ flowchart TD
         end
 
         subgraph LinkdingNS ["linkding namespace"]
-            LinkdingDep["Deployment: linkding<br/>(2 Replicas, Port 9090)"]
+            LinkdingDep["Deployment: linkding<br/>(1 Replica, Port 9090)"]
             LinkdingSvc["Service: linkding<br/>(ClusterIP: 9090)"]
             LinkdingPVC["PVC: linkding-data-pvc<br/>(1Gi ReadWriteOnce)"]
         end
 
         subgraph MealieNS ["mealie namespace"]
-            MealieDep["Deployment: mealie<br/>(2 Replicas, Port 9000)"]
+            MealieDep["Deployment: mealie<br/>(1 Replica, Port 9000)"]
             MealieSvc["Service: mealie<br/>(ClusterIP: 9000)"]
             MealiePVC["PVC: mealie-data-pvc<br/>(500Mi ReadWriteOnce)"]
         end
@@ -86,8 +86,8 @@ Currently, two applications are deployed to the cluster under declarative GitOps
 
 | Application | Namespace | Image | Replicas | Service Port | PVC Size | Mount Path | Purpose |
 | :--- | :--- | :--- | :---: | :---: | :---: | :--- | :--- |
-| **[Linkding](apps/base/linkding/README.md)** | `linkding` | `sissbruecker/linkding:1.31.0` | `2` | `9090/TCP` | `1Gi` | `/etc/linkding/data` | Self-hosted, lightweight bookmark manager with archiving and tagging |
-| **[Mealie](apps/base/mealie/README.md)** | `mealie` | `ghcr.io/mealie-recipes/mealie:v1.3.0` | `2` | `9000/TCP` | `500Mi` | `/app/data` | Recipe manager, meal planner, and automatic recipe scraper |
+| **[Linkding](apps/base/linkding/README.md)** | `linkding` | `sissbruecker/linkding:1.31.0` | `1` | `9090/TCP` | `1Gi` | `/etc/linkding/data` | Self-hosted, lightweight bookmark manager with archiving and tagging |
+| **[Mealie](apps/base/mealie/README.md)** | `mealie` | `ghcr.io/mealie-recipes/mealie:v1.3.0` | `1` | `9000/TCP` | `500Mi` | `/app/data` | Recipe manager, meal planner, and automatic recipe scraper |
 
 ### 1. Linkding (Bookmarks Manager)
 - **Features**: Fast bookmarking, automated webpage archival, tagging, search, browser extension support.

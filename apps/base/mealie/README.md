@@ -12,7 +12,7 @@
 | **Container Image** | `ghcr.io/mealie-recipes/mealie:v1.3.0` |
 | **Internal Port** | `9000` |
 | **Service Type** | `ClusterIP` |
-| **Current Replicas** | `2` |
+| **Current Replicas** | `1` |
 | **Persistent Storage** | `500Mi` (`mealie-data-pvc`) |
 | **Data Mount Path** | `/app/data` |
 | **Run As User/Group** | `33:33` (`www-data`) |
@@ -68,12 +68,12 @@ Mealie provides a default administrator account upon initialization:
 
 ## ⚠️ High Availability & Database Note
 
-> [!IMPORTANT]
-> By default, Mealie operates with an embedded **SQLite** database stored in `/app/data/mealie.db`.
+> [!NOTE]
+> Mealie operates with an embedded **SQLite** database stored in `/app/data/mealie.db`.
 > 
-> Because SQLite does not support concurrent write operations across multiple processes and the PVC uses `ReadWriteOnce`:
-> - Running 2 pods concurrently against the same SQLite database can lead to write locks or sync errors.
-> - **Recommendation**: For standard homelab use with SQLite, maintain `replicas: 1`. To run multiple replicas, configure an external PostgreSQL database via environment variables (`DB_ENGINE: postgres`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_SERVER`, `POSTGRES_PORT`, `POSTGRES_DB`).
+> Because SQLite does not support concurrent write operations across multiple processes and the PVC uses `ReadWriteOnce`, the deployment is configured with **`replicas: 1`** to ensure data integrity and prevent write contention.
+> 
+> To run multiple replicas with horizontal scaling in the future, configure an external PostgreSQL database via environment variables (`DB_ENGINE: postgres`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_SERVER`, `POSTGRES_PORT`, `POSTGRES_DB`).
 
 ---
 

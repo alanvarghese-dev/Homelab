@@ -12,7 +12,7 @@
 | **Container Image** | `sissbruecker/linkding:1.31.0` |
 | **Internal Port** | `9090` |
 | **Service Type** | `ClusterIP` |
-| **Current Replicas** | `2` |
+| **Current Replicas** | `1` |
 | **Persistent Storage** | `1Gi` (`linkding-data-pvc`) |
 | **Data Mount Path** | `/etc/linkding/data` |
 | **Run As User/Group** | `33:33` (`www-data`) |
@@ -73,12 +73,12 @@ Linkding has official and community browser extensions for Chrome and Firefox, a
 
 ## ⚠️ High Availability & Database Note
 
-> [!IMPORTANT]
-> By default, Linkding stores its data in an embedded **SQLite** database inside the persistent volume at `/etc/linkding/data/db.sqlite3`.
+> [!NOTE]
+> Linkding stores its data in an embedded **SQLite** database inside the persistent volume at `/etc/linkding/data/db.sqlite3`.
 > 
-> Because SQLite relies on local filesystem locks and the PVC is `ReadWriteOnce`:
-> - Running multiple replicas (`replicas: 2`) pointing to the same SQLite file can cause database lock contention (`database is locked` errors).
-> - **Recommendation**: For single-node SQLite homelab setups, set `replicas: 1`. If high availability and horizontal scaling are desired, configure Linkding to use an external PostgreSQL database via environment variables (`LD_DB_ENGINE: postgres`, `LD_DB_HOST`, etc.).
+> Because SQLite relies on local filesystem locks and the PVC is `ReadWriteOnce`, the deployment is configured with **`replicas: 1`** to ensure data integrity and prevent SQLite database write lock contention.
+> 
+> If horizontal scaling or high availability is required in the future, configure Linkding to use an external PostgreSQL database via environment variables (`LD_DB_ENGINE: postgres`, `LD_DB_HOST`, etc.).
 
 ---
 
