@@ -22,10 +22,13 @@ spec:
         - name: audio-bookshelf
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
-            - containerPort: 13378
+            - containerPort: 3005
+              protocol: TCP
+      restartPolicy:
+        Always
 
-          # securityContext:
-          #  allowPrivilegeEscalation: false
+        # securityContext:
+        #  allowPrivilegeEscalation: false
 
       #    volumeMounts:
       #  - name: audio-bookshelf-data

@@ -8,4 +8,4 @@ spec:
   selector:
     app: audio-bookshelf
   ports:
-    - port: 13378
+    - port: 3005
