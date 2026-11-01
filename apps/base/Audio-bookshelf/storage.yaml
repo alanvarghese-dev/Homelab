@@ -1,7 +1,31 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: audio-bookshelf-data-pvc
+  name: audio-bookshelf-config
+  namespace: audio-bookshelf
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audio-bookshelf-metadata
+  namespace: audio-bookshelf
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: audio-bookshelf-audiobooks
   namespace: audio-bookshelf
 spec:
   accessModes:
