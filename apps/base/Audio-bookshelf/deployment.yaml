@@ -27,11 +27,11 @@ spec:
           # securityContext:
           #  allowPrivilegeEscalation: false
 
-          volumeMounts:
-            - name: audio-bookshelf-data
-              mountPath: etc/audio-bookshelf/data
+      #    volumeMounts:
+      #  - name: audio-bookshelf-data
+      #    mountPath: etc/audio-bookshelf/data
 
-      volumes:
-        - name: audio-bookshelf-data
-          persistentVolumeClaim:
-            claimName: audio-bookshelf-data-pvc
+      #volumes:
+      #  - name: audio-bookshelf-data
+      #    persistentVolumeClaim:
+      #      claimName: audio-bookshelf-data-pvc
