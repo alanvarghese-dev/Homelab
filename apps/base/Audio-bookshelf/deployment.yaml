@@ -36,6 +36,8 @@ spec:
             - name: audio-bookshelf-audiobooks
               mountPath: /audiobooks
 
+      restartPolicy: Always
+
       volumes:
         - name: audio-bookshelf-config
           persistentVolumeClaim:
@@ -48,4 +50,3 @@ spec:
             claimName:audio-bookshelf-audiobooks
 
             #
-      restartPolicy: Always
