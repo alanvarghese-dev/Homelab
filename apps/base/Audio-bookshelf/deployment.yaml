@@ -29,23 +29,20 @@ spec:
             allowPrivilegeEscalation: false
 
           volumeMounts:
-            - name: audio-bookshelf-config
-              mountPath: /config
-            - name: audio-bookshelf-metadata
-              mountPath: /metadata
-            - name: audio-bookshelf-audiobooks
-              mountPath: /audiobooks
+            - mountPath: /config
+              name: audio-bookshelf-config
+            - mountPath: /metadata
+              name: audio-bookshelf-metadata
+            - mountPath: /audiobooks
+              name: audio-bookshelf-audiobooks
 
-    volumes:
-      - name: audio-bookshelf-config
-        persistentVolumeClaim:
-          claimName: audio-bookshelf-config
-      - name: audio-bookshelf-metadata
-        persistentVolumeClaim:
-          claimName: audio-bookshelf-metadata
-      - name: audio-bookshelf-audiobooks
-        persistentVolumeClaim:
-          claimName:
-            audio-bookshelf-audiobooks
-
-            #
+      volumes:
+        - name: audio-bookshelf-config
+          persistentVolumeClaim:
+            claimName: audio-bookshelf-config
+        - name: audio-bookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audio-bookshelf-metadata
+        - name: audio-bookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName: audio-bookshelf-audiobooks
