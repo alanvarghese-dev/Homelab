@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
-  namespace: linkding
 spec:
   selector:
     matchLabels:
@@ -78,13 +77,14 @@ data:
     no-autoupdate: true
 
     ingress:
-    - hostname: linkding.alanvarghese.dev 
+    - hostname: linkding.alanvarghese.dev
       service: http://linkding:9090
 
     # This rule sends traffic to the built-in hello-world HTTP server. This can help debug connectivity
     # issues. If hello.example.com resolves and tunnel.example.com does not, then the problem is
     # in the connection from cloudflared to your local service, not from the internet to cloudflared.
-    - hostname: hello.example.com
-      service: hello_world
+
+    #- hostname: hello.example.com
+    #  service: hello_world
     # This rule matches any traffic which didn't match a previous rule, and responds with HTTP 404.
-    - service: http_status:404
+    # - service: http_status:404
