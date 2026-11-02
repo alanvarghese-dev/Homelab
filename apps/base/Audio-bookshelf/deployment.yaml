@@ -13,10 +13,10 @@ spec:
       labels:
         app: audio-bookshelf
     spec:
-      # securityContext:
-      #   fsGroup: 33 # www-data group ID
-      #  runAsUser: 33 # www-data user ID
-      # runAsGroup: 33 # www-data group ID
+      securityContext:
+        fsGroup: 1000 # www-data group ID
+        runAsUser: 1000 # www-data user ID
+        runAsGroup: 1000 # www-data group ID
 
       containers:
         - name: audio-bookshelf
@@ -24,17 +24,28 @@ spec:
           ports:
             - containerPort: 3005
               protocol: TCP
-      restartPolicy:
-        Always
 
-        # securityContext:
-        #  allowPrivilegeEscalation: false
+          securityContext:
+            allowPrivilegeEscalation: false
 
-      #    volumeMounts:
-      #  - name: audio-bookshelf-data
-      #    mountPath: etc/audio-bookshelf/data
+          volumeMounts:
+            - name: audio-bookshelf-config
+              mountPath: /config
+            - name: audio-bookshelf-metadata
+              mountPath: /metadata
+            - name: audio-bookshelf-audiobooks
+              mountPath: /audiobooks
 
-      #volumes:
-      #  - name: audio-bookshelf-data
-      #    persistentVolumeClaim:
-      #      claimName: audio-bookshelf-data-pvc
+      volumes:
+        - name: audio-bookshelf-config
+          persistentVolumeClaim:
+            claimName: audio-bookshelf-config
+        - name: audio-bookshelf-metadata
+          persistentVolumeClaim:
+            claimName: audio-bookshelf-metadata
+        - name: audio-bookshelf-audiobooks
+          persistentVolumeClaim:
+            claimName:audio-bookshelf-audiobooks
+
+            #
+      restartPolicy: Always
