@@ -3,5 +3,6 @@ rancher-desktop-ca.crt
 .DS_STORE
 .env 
 screenshots/
+age.agekey
 
 
