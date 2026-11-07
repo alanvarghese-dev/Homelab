@@ -23,6 +23,7 @@ spec:
           image: ghcr.io/advplyr/audiobookshelf:latest
           ports:
             - containerPort: 3005
+              targetPort: 80
               protocol: TCP
 
           securityContext:
