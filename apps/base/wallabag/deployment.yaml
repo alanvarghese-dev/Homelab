@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallabag
+  namespace: wallabag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallabag
+  template:
+    metadata:
+      labels:
+        app: wallabag
+    spec:
+      securityContext:
+        fsGroup: 1000 # www-data group ID
+        runAsUser: 1000 # www-data user ID
+        runAsGroup: 1000 # www-data group ID
+
+      containers:
+        - name: wallabag
+          image: ghcr.io/wallabag/wallabag:latest
+
+          ports:
+            - containerPort: 7005
+              targetPort: 80
+              protocol: TCP
+
+          securityContext:
+            allowPrivilegeEscalation: false
