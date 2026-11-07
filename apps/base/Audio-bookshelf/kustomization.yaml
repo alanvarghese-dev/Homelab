@@ -7,3 +7,4 @@ resources:
   - namespace.yaml
   - storage.yaml
   - service.yaml
+  - configmap.yaml
