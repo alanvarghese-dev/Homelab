@@ -33,6 +33,7 @@ spec:
 
           ports:
             - containerPort: 7575
+              targetPort: 80
               protocol: TCP
 
           volumeMounts:
