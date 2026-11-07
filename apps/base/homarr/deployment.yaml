@@ -21,7 +21,7 @@ spec:
 
       containers:
         - name: homarr
-          image: ghcr.io/homarr-labs/homarr:latest
+          image: ghcr.io/ajnart/homarr:latest
 
           securityContext:
             allowPrivilegeEscalation: false
