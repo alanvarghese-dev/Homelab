@@ -26,9 +26,9 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
 
-          #envFrom:
-          # - configMapRef:
-          #     name: homarr-configmap
+          envFrom:
+            - configMapRef:
+                name: homarr-configmap
 
           ports:
             - containerPort: 7575
