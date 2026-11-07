@@ -29,6 +29,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: homarr-configmap
+                namespace: homarr
 
           ports:
             - containerPort: 7575
