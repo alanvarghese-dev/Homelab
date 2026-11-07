@@ -20,7 +20,7 @@ spec:
 
       containers:
         - name: wallabag
-          image: ghcr.io/wallabag/wallabag:latest
+          image: docker.io/wallabag/wallabag:latest
 
           ports:
             - containerPort: 7005
