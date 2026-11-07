@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - ../../base/Audio-bookshelf/
   - cloudflare.yaml
+  - cloudflare-secret.yaml
