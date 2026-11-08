@@ -1,5 +1,5 @@
 rancher-desktop-kubeconfig
-rancher-desktop-ca.crt
+rancher-ca.crt
 .DS_STORE
 .env 
 screenshots/
