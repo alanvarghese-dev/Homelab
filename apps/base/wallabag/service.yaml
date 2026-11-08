@@ -9,3 +9,5 @@ spec:
     app: wallabag
   ports:
     - port: 7005
+      targetPort: 80
+      protocol: TCP
